@@ -1,0 +1,44 @@
+my\Buy:
+  type: entity
+  table: buy
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+  fields:
+    tahvil_date:
+      type: datetime
+      nullable: true
+    number:
+      type: integer
+      nullable: true
+    tocken:
+      type: string
+      length: 255
+      nullable: true
+    cost:
+      type: integer
+      nullable: true
+    state:
+      type: integer
+      nullable: true
+    kharid_date:
+      type: datetime
+      nullable: true
+
+
+  manyToOne:
+    user:
+      targetEntity: User
+      inversedBy: buy
+      joinColumn:
+        name: user_id
+        referencedColumnName: id
+    bread:
+      targetEntity: Bread
+      inversedBy: buy
+      joinColumn:
+        name: bread_id
+        referencedColumnName: id
+  lifecycleCallbacks:
+    prePersist: [  setKharidDateAtValue ]

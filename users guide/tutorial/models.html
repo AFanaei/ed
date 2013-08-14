@@ -1,0 +1,90 @@
+<!doctype html>
+
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<title>EasyDev Users Guide</title>
+<link href="../css/style.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="../css/menu.css" type="text/css" media="screen" />
+<script type="text/javascript" src="../js/menu.js"></script>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/collection.js"></script>
+<!--[if IE]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<!--[if IE 6]>
+<script src="js/belatedPNG.js"></script>
+<script>
+	DD_belatedPNG.fix('*');
+</script>
+<![endif]--></head>
+
+<body>
+<div id="wrap">
+<nav id="mainnav">
+
+<h1 id="textlogo">
+EasyDev<span> Users Guide</span>
+</h1>
+</nav>
+<script type="text/javascript">create_menu('../');</script>
+<section id="content" class="normalpage"><section id="page">
+
+<article class="post">
+<section class="entry">
+<h3>Models</h3>
+<div style="direction:rtl; text-align:right; font-family: Tahoma; font-size:12px;">
+<p>در آموزش قبلی روش ایجاد Controller ها را آموختید، حال در این آموزش با روش ایجاد Model ها آشنا میشوید.</p>
+
+<p>Model ها کلاسهایی هستند که حاوی داده هایی میباشند این داده ها میتوانند در دیتابیس یا در سایر منابع اطلاعاتی باشند. واکشی داده ها از منابع اطلاعاتی بستگی به درخواستی دارد که از سمت Controller ها ارسال میشود.</p>
+&nbsp;
+
+<p>نمونه ای از نحوه ایجاد Model ها (برای کار با Model ها باید مباحث شی گرائی در PHP را قبلا مطالعه کرده باشید):</p>
+
+<div class="codebox">class newsModel extends ED_Model<br />
+    {<br />
+&nbsp;&nbsp;&nbsp; public function getLatestNews()<br />
+&nbsp;&nbsp;&nbsp; {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    return &#39;EasyDev 1.0 Beta was published&#39;;<br />
+&nbsp;&nbsp;&nbsp; }<br />
+    }</div>
+    <p>کلاس ایجاد شده را با نام news.php در مسیر app/models ذخیره کنید.</p>
+    <p>کلیه کلاسهایی که ایجاد میکنید باید از کلاس Model سیستم یعنی ED_Model مشتق شده باشند، این Model متدهای اصلی سیستم را در اختیار شما قرار میدهد.</p>
+    <hr />
+    <p>نحوه فراخوانی Model ها از طریق Controller ها به صورت زیر میباشد:</p>
+    <div class="codebox">mixed $this-&gt;load-&gt;model(array(&#39;class-name&#39;, &#39;file-name&#39;), &#39;method&#39;, parameter = array());</div>
+
+    <div class="codebox">public function view($params = NULL)<br />
+    {<br />
+    &nbsp;&nbsp;&nbsp; $data = $this-&gt;load-&gt;model(array(&#39;newsModel&#39;, &#39;news&#39;), &#39;getLatestNews&#39;, $params);<br />
+    }</div>
+    <p>در مثال بالا پارامتر اول به صورت یک آرایه 2 خانه ای میباشد که خانه اول مشخص کننده نام کلاس Model و خانه دوم مشخص کننده اسم فایلی است که کلاس را در آن ایجاد کرده اید ( نام فایل را باید بدون درج پسوند یعنی php. وارد کنید. هر 2 خانه مقدار رشته دریافت میکنند ).</p>
+    <p>پارامتر دوم در مثال بالا مشخص کننده متدی هست که میخواهیم فراخوانی کنیم، اسم متد باید به صورت یک رشته وارد شد. ( این پارامتر اختیاری میباشد و در صورت وارد نکردن، سیستم به صورت خودکار متد پیشفرضی که در فایل config/config.php مشخص کرده اید را فراخوانی میکند )</p>
+    <p>پارامتر سوم مشخص کننده مقادیری است که میخواهیم به متد درخواست شده ارسال کنیم این پارامتر به صورت یک آرایه میباشد. ( این پارامتر اختیاری میباشد ) در صورتی که میخواهید به متد پیشفرض مقداری را ارسال کنید طبق مثال زیر عمل کنید.</p>
+    <p>در صورت اجرای ناموفق مقدار برگشتی FALSE میباشد.</p>
+    <div class="codebox">mixed $this-&gt;load-&gt;model(array(&#39;class-name&#39;, &#39;file-name&#39;), &#39;&#39;, parameters = array());</div>
+    <p>&nbsp;</p>
+    <p>در مبحث بعدی با نحوه ایجاد View ها و فراخوانی آنها توسط Controller ها را خواهید خواند.</p>
+    <br />
+</div>
+
+</section>
+<div class="clear"></div>
+</article>
+</section>
+</section>
+</div>
+
+<footer>
+
+<div id="bottom">
+<a href="#">Home</a> | <a href="#">About Us</a> | <a href="#">Contact Us</a> |<a href="#"> Support</a> | <a href="#">Products</a> | <a href="#">Services</a>
+<div class="clear"></div>
+</div>
+<div id="credits">
+2010 &copy; All Rights Reserved.  <a href="http://cssheaven.org">Website Template</a> by CSSHeaven </div>
+</footer>
+
+</body>
+</html>

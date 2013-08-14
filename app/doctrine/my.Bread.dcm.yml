@@ -1,0 +1,29 @@
+my\Bread:
+  type: entity
+  table: bread
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+  fields:
+    type:
+      type: string
+      length: 255
+    cost:
+      type: integer
+    tahvilhour:
+      type: integer
+    rezervday:
+      type: integer
+    rezervhour:
+      type: integer
+    fromdate:
+      type: datetime
+    todate:
+      type: datetime
+    maxnum:
+      type: integer
+  oneToMany:
+    buy:
+      targetEntity: Buy
+      mappedBy: bread

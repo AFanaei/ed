@@ -1,0 +1,99 @@
+﻿<!doctype html>
+
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<title>EasyDev Users Guide</title>
+<link href="../css/style.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="../css/menu.css" type="text/css" media="screen" />
+<script type="text/javascript" src="../js/menu.js"></script>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/collection.js"></script>
+<!--[if IE]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<!--[if IE 6]>
+<script src="js/belatedPNG.js"></script>
+<script>
+	DD_belatedPNG.fix('*');
+</script>
+<![endif]--></head>
+
+<body>
+<div id="wrap">
+<nav id="mainnav">
+
+<h1 id="textlogo">
+EasyDev<span> Users Guide</span>
+</h1>
+</nav>
+<script type="text/javascript">create_menu('../');</script>
+<section id="content" class="normalpage"><section id="page">
+
+<article class="post">
+<section class="entry">
+<h3>EasyDev URLs</h3>
+<div style="direction:rtl; text-align:right; font-family: Tahoma; font-size:12px;">
+<p>آدرس ها در فریم ورک EasyDev به 2 صورت Segment-Based و QueryString میباشند. در هر وب سایت در هر لحظه فقط میتوانید یکی از این انواع را مورد استفاده قرار دهید، روشی پیشفرضی که بر روی فریم ورک فعال میباشد روش Segment-based میباشد. این نوع آدرس دهی هم برای موتورهای جستجو و هم برای انسان ها قابل فهم تر از روش QueryString میباشد.</p>
+
+<p>&nbsp;</p>
+&nbsp;
+
+<p><strong>روش Segment-Based:</strong> تمامی آدرسها باید با رعایت اصول فریم ورک برای این روش ساخته شوند، به طور مثال فریم ورک فقط قادر به شناسایی الگوهای زیر میباشد و در صورتی که آدرس تولید شده طبق این الگوها نباشد فریم ورک به درخواست ارسال شده پاشخی نخواهد داد.</p>
+
+<div class="codebox">http://example.com/index.php/class/function/ID<br />
+    <br />
+    http://example.com/index.php/directory/class/function/ID</div>
+    <p>این الگوها مطابق با الگوی MVC میباشند.</p>
+    <p>&#39;directory&#39;: در صورتی که Controller مورد درخواست شما درون یک فولدر قرار دارد در این بخش اسم فولدر مورد نظر باید وارد شود ( تنها یک زیر فولدر به عمق 1 قابل شناسایی میباشد و در صورتی که Controller درون زیر فولدری با عمق بیشتر از 1 میباشد باید از روش Routing ( در ادامه همین آموزش توضیح داده خواهد شد ) استفاده شود. ) ( اختیاری )</p>
+    <p>&#39;class&#39;: این بخش مشخص کننده اسم کلاس Controller درخواست شده میباشد. ( این پارامتر اختیاری میباشد و در صورتی که وارد نشود طبق تنظیمات موجود در فایل Controller ،config/config.php پیشفرض اجرا خواهد شد )</p>
+    <p>&#39;function&#39;: این بخش تعیین میکند پس از فراخوانی کلاس مورد نظر کدام تابع اجرا شود. ( این پارامتر در صورتی میتواند وارد نشود که مقداری برای ID وارد نکنید. در صورتی که این پارامتر تعیین نشود طبق تنظیمات موجود در فایل Method ،config/config.php پیشفرض اجرا خواهد شد )</p>
+    <p>&#39;ID&#39;: در صورتی که تمایل دارید مقادیری را به تابع مورد نظر ارسال کنید در این بخش وارد کنید. ( این پارامتر اختیاری میباشد - فقط در صورتی میتوانید مقادیری را به تابع مورد نظر ارسال کنید که پارامترهای class و function را مشخص کرده باشید. )</p>
+    <hr />
+    <p>&nbsp;</p>
+    <p><strong>روش QueryString:</strong> نحوه استفاده از این روش و شکل کلی آن به صورت زیر میباشد.</p>
+    <div class="codebox">http://example.com/index.php?d=products/shoes&amp;c=product&amp;m=show&amp;id=1234</div>
+    <p>در این مثال ابتدا Controller یا کلاس product از فولدر app/controllers/products/shoes فراخوانی میشود، سپس مقدار 1234 به تابع show موجود در Controller ارسال میشود. توجه داشته باشید تک تک مقادیر بالا اختیاری بوده و در صورت وارد نکردن آنها از مقادیر پیشفرض سیستم استفاده میشود. همچنین در صورتی که تمایل به ارسال مقادیری متعددی به تابع مورد نظر دارید میتوانید در انتهای رشته آنها را وارد کنید. ( ترتیب پارامترها در این روش اهمیت ندارد )</p>
+    <p>برای فعال کردن این روش آدرس دهی به فایل config/config.php مراجعه کرده و مقادیر زیر را در صورت تمایل ویرایش کنید.</p>
+    <div class="codebox">$config['switchToQueryString'] = FALSE;<br />
+$config['controllerKey'] = 'c';<br />
+        $config['functionKey'] = 'm';<br />
+        $config['directoryKey'] = 'd';</div>
+    <p>خط اول در صورتی که TRUE باشد، باعث فعال شدن این روش میشود.</p>
+    <p>خط دوم مشخص کننده کلید دسترسی به Controller میباشد و به صورت پیشفرض c میباشد.</p>
+    <p>خط سوم مشخص کننده کلید دسترسی به نام تابع میباشد.</p>
+    <p>خط چهارم مشخص کننده کلید دسترسی به اسم فولدری میباشد که Controller درون آن قرار دارد.</p>
+    <hr />
+    <p>&nbsp;</p>
+    <p><strong>فایل RoutingRule:</strong> این فایل به شما اجازه میدهد هر نوع آدرسی را بازنویسی کرده و آدرس جدید برای دسترسی به بخش های مختلف تولید کنید. نحوه بازنویسی آدرس ها در زیر به مراحل مثال آورده شده است.</p>
+    <div class="codebox">// Reqular Expression Pattern<br />
+        $routingRules[&#39;product/(\d)+&#39;] = &#39;products/shoes/product/show/\1&#39;;</div>
+    <p>جهت اضافه کردن الگو به فایل app/config/RoutingRules.php میتوانید با اضافه کردن خطوطی طبق مثال بالا برای سیستم خود الگوهای اختصاصی تعریف کنید. ( جهت استفاده از این مکانیزم باید قبلا مباحث Regular Expression را مطالعه کرده باشید )</p>
+    <p>در مثال بالا وقتی کاربر آدرس <a href="http://example.com/product/123">http://example.com/product/123</a> را وارد میکند، سیستم در فایل app/config/RoutingRules.php به دنبال الگوهایی میگردد که با آدرس وارد شده تطابق داشته باشند، در صورتی که الگویی مشابه پیدا کرد شروع به بازنویسی آدرس وارد شده میکند و کاربر را به آدرسی که برای آن الگو مشخص شده است ارسال میکند. حال آدرسی که کاربر وارد کرده است با الگو بالا مطابقت میکند و سیستم کاربر را به آدرس زیر انتقال میدهد.</p>
+    <div class="codebox">http://example.com/product/123&nbsp;&nbsp;&nbsp;&nbsp; =&gt;&nbsp;&nbsp;&nbsp; http://example.com/products/shoes/product/show/123</div>
+    <p>اگر یادتان باشد در بخش آدرسهای Segment-Based گفتیم پارامتر directory فقط قادر به شناسایی زیر فولدرهایی با عمق یک میباشد ولی چنانچه در این مثال مشاهده میکند تعداد زیر فولدرها محدودیتی ندارند و میتوانند به هر تعداد باشند.</p>
+    <hr />
+    <p>&nbsp;</p>
+    <p><strong> مورد نحوه دسترسی به مقادیری که از طریق URL ها به برنامه ارسال میشوند در بخش URI Routing بحث خواهد شد.</strong></p>
+    <br />
+</div>
+
+</section>
+<div class="clear"></div>
+</article>
+</section>
+</section>
+</div>
+
+<footer>
+
+<div id="bottom">
+<a href="#">Home</a> | <a href="#">About Us</a> | <a href="#">Contact Us</a> |<a href="#"> Support</a> | <a href="#">Products</a> | <a href="#">Services</a>
+<div class="clear"></div>
+</div>
+<div id="credits">
+2010 &copy; All Rights Reserved.  <a href="http://cssheaven.org">Website Template</a> by CSSHeaven </div>
+</footer>
+
+</body>
+</html>

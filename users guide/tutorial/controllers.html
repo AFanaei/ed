@@ -1,0 +1,88 @@
+<!doctype html>
+
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<title>EasyDev Users Guide</title>
+<link href="../css/style.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="../css/menu.css" type="text/css" media="screen" />
+<script type="text/javascript" src="../js/menu.js"></script>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/collection.js"></script>
+<!--[if IE]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<!--[if IE 6]>
+<script src="js/belatedPNG.js"></script>
+<script>
+	DD_belatedPNG.fix('*');
+</script>
+<![endif]--></head>
+
+<body>
+<div id="wrap">
+<nav id="mainnav">
+
+<h1 id="textlogo">
+EasyDev<span> Users Guide</span>
+</h1>
+</nav>
+<script type="text/javascript">create_menu('../');</script>
+<section id="content" class="normalpage"><section id="page">
+
+<article class="post">
+<section class="entry">
+<h3>Controllers</h3>
+<div style="direction:rtl; text-align:right; font-family: Tahoma; font-size:12px;">
+<p>برای ایجاد صفحات استاتیک ابتدا باید یک Controller ایجاد کنید.</p>
+
+<p>Controller ها کلاسهایی هستند که به شما اجازه میدهند درخواست های کاربران دریافت کرده آنها را تحلیل و پردازش کرده و در نهایت نتیجه نهایی را به View ( در مباحث بعدی توضیح داده خواهد شد )&nbsp;مربوطه ارسال کنید.</p>
+&nbsp;
+
+<p>نمونه ای از نحوه ایجاد Controller ها (برای کار با Controller ها باید مباحث شی گرائی در PHP را قبلا مطالعه کرده باشید):</p>
+
+<div style="font-size:12; font-family:Arial; background-color:#C9C9C9; padding:14px 10px 12px 10px; border:1px solid #8C8C8C; display:block; margin:14px 0 14px 0; direction:ltr; text-align:left;">class news extends ED_Controller<br />
+    {<br />
+&nbsp;&nbsp;&nbsp; public function view($params = NULL)<br />
+&nbsp;&nbsp;&nbsp; {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <br />
+&nbsp;&nbsp;&nbsp; }<br />
+    }</div>
+    <p>کلاس ایجاد شده را با نام news.php در مسیر app/controllers ذخیره کنید. ( نکته: اسم فایل باید دقیقا برابر اسم کلاس باشد )</p>
+    <p>کلیه کلاسهایی که ایجاد میکنید باید از Controller اصلی سیستم یعنی ED_Controller مشتق شده باشند، این Controller متدهای اصلی سیستم را در اختیار شما قرار میدهد.</p>
+    <p>حال وقتی کاربر آدرس زیر را وارد میکند سیستم به صورت خودکار کلاس مربوطه را فراخوانی میکند.</p>
+
+<div style="font-size:12; font-family:Arial; background-color:#C9C9C9; padding:14px 10px 12px 10px; border:1px solid #8C8C8C; display:block; margin:14px 0 14px 0; direction:ltr; text-align:left;">http://example.com/news/view/10</div>
+    <hr />
+    <p>&nbsp;</p>
+    <p>الگوی آدرسها در سیستم به شکل زیر میباشد:</p>
+
+<div style="font-size:12; font-family:Arial; background-color:#C9C9C9; padding:14px 10px 12px 10px; border:1px solid #8C8C8C; display:block; margin:14px 0 14px 0; direction:ltr; text-align:left;">http://example.com/[directory]/[class-name]/[method-name]/[other-parameters]</div>
+    <p>در این الگو بخش [directory] اختیاری است یعنی در صورتی که وارد نشود سیستم به صورت خودکار فقط فولدر controllers را جستجو میکند، در صورتی که فایل کلاس در یک زیر فولدر قرار دارد این پارامتر باید حتما مشخص شود ( تنها یک زیر فولدر میتوانید داشته باشید و سیستم در صورتی که زیر فولدرهای تو در تو ایجاد کنید قادر به شناسایی آنها نخواهد بود ( در مورد اینگونه زیر فولدرها به بخش URI Routing مراجعه کنید ).</p>
+    <p>در مثال بالا مقدار 10 برای متد view ازسال میشود.</p>
+    <hr style="margin-bottom: 0px" />
+    <p>&nbsp;</p>
+    <p>در مبحث بعدی با نحوه ایجاد Model ها و فراخوانی آنها توسط Controller ها را خواهید خواند.</p>
+    <br />
+</div>
+
+</section>
+<div class="clear"></div>
+</article>
+</section>
+</section>
+</div>
+
+<footer>
+
+<div id="bottom">
+<a href="#">Home</a> | <a href="#">About Us</a> | <a href="#">Contact Us</a> |<a href="#"> Support</a> | <a href="#">Products</a> | <a href="#">Services</a>
+<div class="clear"></div>
+</div>
+<div id="credits">
+2010 &copy; All Rights Reserved.  <a href="http://cssheaven.org">Website Template</a> by CSSHeaven </div>
+</footer>
+
+</body>
+</html>

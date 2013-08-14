@@ -1,0 +1,27 @@
+my\Incmon:
+  type: entity
+  table: incmon
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+  fields:
+    tocken:
+      type: string
+      length: 255
+    amount:
+      type: integer
+    date:
+      type: datetime
+    state:
+      type: integer
+  manyToOne:
+    user:
+      targetEntity: User
+      inversedBy: incmon
+      joinColumn:
+        name: use_id
+        referencedColumnName: id
+
+  lifecycleCallbacks:
+    prePersist: [  setDateValue , setTockenValue ]

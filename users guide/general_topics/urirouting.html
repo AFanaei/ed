@@ -1,0 +1,87 @@
+﻿<!doctype html>
+
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<title>EasyDev Users Guide</title>
+<link href="../css/style.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="../css/menu.css" type="text/css" media="screen" />
+<script type="text/javascript" src="../js/menu.js"></script>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/collection.js"></script>
+<!--[if IE]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<!--[if IE 6]>
+<script src="js/belatedPNG.js"></script>
+<script>
+	DD_belatedPNG.fix('*');
+</script>
+<![endif]--></head>
+
+<body>
+<div id="wrap">
+<nav id="mainnav">
+
+<h1 id="textlogo">
+EasyDev<span> Users Guide</span>
+</h1>
+</nav>
+<script type="text/javascript">create_menu('../');</script>
+<section id="content" class="normalpage"><section id="page">
+
+<article class="post">
+<section class="entry">
+<h3>URI Routing</h3>
+<div style="direction:rtl; text-align:right; font-family: Tahoma; font-size:12px;">
+<p>این کتابخانه به شما اجازه میدهد تا به مقادیر ارسال شده از طریق Url دسترسی شده باشید. این کتابخانه جزو کتابخانه های پیشفرض سیستم میباشد.</p>
+    <p>قبل از مطالعه این بخش لازم است بخش <strong><a href="easydevurls.html">EasyDev URLs</a></strong> مطالعه کرده باشید.</p>
+
+<p>&nbsp;</p>
+&nbsp;
+
+<p>نحوه استفاده از این کتابخانه به شکل زیر میباشد</p>
+
+<div class="codebox">$this-&gt;router</div>
+    <hr />
+    <p>&nbsp;</p>
+    <p>حهت دسترسی به اسم فولدری ای که از طریق ادرس Url ارسال شده است طبق مقال زیر عمل کنید:</p>
+    <div class="codebox">&nbsp;$this-&gt;router-&gt;getDirectory();</div>
+    <p>خروجی مثال بالا به صورت رشته میباشد.</p>
+    <hr />
+    <p>&nbsp;</p>
+    <p>جهت دسترسی به اسم Controller ای که از طریق آدرس Url ارسال شده است طبق مثال زیر عمل کنید:</p>
+    <div class="codebox">&nbsp;$this-&gt;router-&gt;getClass();</div>
+    <p>خروجی مثال بالا به صورت رشته میباشد.</p>
+    <hr />
+    <p>&nbsp;</p>
+    <p>جهت دسترسی به اسم function یا method ای که از طریق آدرس Url ارسال شده است طبق مثال زیر عمل کنید:</p>
+    <div class="codebox">&nbsp;$this-&gt;router-&gt;getMethod();</div>
+    <p>خروجی مثال بالا به صورت رشته میباشد.</p>
+    <hr />
+    <p>&nbsp;</p>
+    <p>جهت دسترسی به مقادیری که از طریق آدرس Url ارسال شده است طبق مثال زیر عمل کنید:</p>
+    <div class="codebox">&nbsp;$this-&gt;router-&gt;getRequests();</div>
+    <p>خروجی مثال بالا به صورت یک آرایه رشته ای از مقادیری میباشد که از طریق آدرس Url ارسال شده است و ترتیب این مقادیر مانند ترتیب مقادیری است که در Url وارد شده اند.</p>
+    <br />
+</div>
+
+</section>
+<div class="clear"></div>
+</article>
+</section>
+</section>
+</div>
+
+<footer>
+
+<div id="bottom">
+<a href="#">Home</a> | <a href="#">About Us</a> | <a href="#">Contact Us</a> |<a href="#"> Support</a> | <a href="#">Products</a> | <a href="#">Services</a>
+<div class="clear"></div>
+</div>
+<div id="credits">
+2010 &copy; All Rights Reserved.  <a href="http://cssheaven.org">Website Template</a> by CSSHeaven </div>
+</footer>
+
+</body>
+</html>

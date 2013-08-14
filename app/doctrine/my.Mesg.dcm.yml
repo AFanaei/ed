@@ -1,0 +1,13 @@
+my\Mesg:
+  type: entity
+  table: Mesg
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+  fields:
+    page:
+      type: string
+      length: 255
+    content:
+      type: text

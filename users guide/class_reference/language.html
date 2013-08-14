@@ -1,0 +1,78 @@
+﻿<!doctype html>
+
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<title>EasyDev Users Guide</title>
+<link href="../css/style.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="../css/menu.css" type="text/css" media="screen" />
+<script type="text/javascript" src="../js/menu.js"></script>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/collection.js"></script>
+<!--[if IE]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<!--[if IE 6]>
+<script src="js/belatedPNG.js"></script>
+<script>
+	DD_belatedPNG.fix('*');
+</script>
+<![endif]--></head>
+
+<body>
+<div id="wrap">
+<nav id="mainnav">
+
+<h1 id="textlogo">
+EasyDev<span> Users Guide</span>
+</h1>
+</nav>
+<script type="text/javascript">create_menu('../');</script>
+<section id="content" class="normalpage"><section id="page">
+
+<article class="post">
+<section class="entry">
+<h3>Language Class Reference</h3>
+<div style="direction:rtl; text-align:right; font-family: Tahoma; font-size:12px;">
+<p>با استفاده از این کتابخانه قادر خواهید بود وب سایت های چند زبانه طراحی کنید. در ادامه ی آموزش با نحوه ی ایجاد فایل های زبان و همچنین با نحوه استفاده از آنها آشنا خواهید شد.</p>
+
+<p>&nbsp;</p>
+&nbsp;
+
+<p><strong>کلاس Language:</strong> برای کار با این کلاس در کلیه مراحل پروژه میتوانید به شکل زیر عمل کنید.</p>
+    <p>1 - ابتدا یک فولدر به اسم fa در مسیر app/language ایجاد کنید.</p>
+    <p>2 - حال یک فایل به اسم product.php در مسیر app/language/fa ایجاد کنید.</p>
+    <p>3 - حال این خطوط را به فایلی که ایجاد کرده اید اضافه کنید.</p>
+    <div class="codebox">$lang[&#39;product_name&#39;] = &#39;This is a EasyDev Framework&#39;;<br />
+        $lang[&#39;product_test&#39;] = &#39;The quick brown fox jumps over the lazy dog&#39;;</div>
+    <p>4 - حال در ابتدای برنامه خود خط زیر را وارد کنید. این خط باعث میشود زبان مورد نظر توسط سیستم بارگذاری شود.</p>
+
+<div class="codebox">$this-&gt;lang-&gt;load(&#39;fa:product&#39;);</div>
+    <p>5 - حال برای دسترسی به محتوای فایل زبان طبق مثال زیر عمل کنید.</p>
+    <div class="codebox">echo lang(&#39;product_name&#39;);<br />
+        echo lang(&#39;product_test&#39;);</div>
+    <p>در مثال بالا ابتدا This is a EasyDev Framework و سپس The quick brown fox jumps over the lazy dog به خروجی ارسال میشود.</p>
+    <p><strong>نکته:</strong> در صورتی که به صورت زیر فایل زبان فراخوانی شود، زبان پیشفرض سیستم بارگذاری خواهد شد.</p>
+    <div class="codebox">$this-&gt;lang-&gt;load(&#39;product&#39;);</div>
+    <br />
+</div>
+
+</section>
+<div class="clear"></div>
+</article>
+</section>
+</section>
+</div>
+
+<footer>
+
+<div id="bottom">
+<a href="#">Home</a> | <a href="#">About Us</a> | <a href="#">Contact Us</a> |<a href="#"> Support</a> | <a href="#">Products</a> | <a href="#">Services</a>
+<div class="clear"></div>
+</div>
+<div id="credits">
+2010 &copy; All Rights Reserved.  <a href="http://cssheaven.org">Website Template</a> by CSSHeaven </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,18 @@
+{
+    "name": "boss/ed",
+    "description": "this is a lite weaight framework",
+    "license": "GPL",
+    "authors": [
+        {
+            "name": "Ahmad Fanaei",
+            "email": "fanaei.ahmad@gmail.com"
+        }
+    ],
+    "require": {
+        "doctrine/orm": "2.*",
+        "symfony/yaml": "2.*"
+    },
+    "autoload": {
+        "psr-0": {"": "app/"}
+    }
+}

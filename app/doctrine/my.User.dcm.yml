@@ -1,0 +1,53 @@
+my\User:
+  type: entity
+  table: user
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+  fields:
+    username:
+      type: string
+      length: 255
+      unique: true
+    password:
+      type: string
+      length: 255
+    fname:
+      type: string
+      length: 255
+    sname:
+      type: string
+      length: 255
+    tel:
+      type: string
+      length: 255
+      unique: true
+    email:
+      type: string
+      length: 255
+      nullable: true
+      unique: true
+    address:
+      type: string
+      length: 255
+    account:
+      type: integer
+    building:
+      type: string
+      length: 255
+    block:
+      type: integer
+    stair:
+      type: integer
+    unit:
+      type: integer
+    
+  oneToMany:
+    buy:
+      targetEntity: Buy
+      mappedBy: user
+    incmon:
+      targetEntity: Incmon
+      mappedBy: user
+      

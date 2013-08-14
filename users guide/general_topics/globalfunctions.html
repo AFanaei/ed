@@ -1,0 +1,144 @@
+﻿<!doctype html>
+
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<title>EasyDev Users Guide</title>
+<link href="../css/style.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="../css/menu.css" type="text/css" media="screen" />
+<script type="text/javascript" src="../js/menu.js"></script>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/collection.js"></script>
+<!--[if IE]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<!--[if IE 6]>
+<script src="js/belatedPNG.js"></script>
+<script>
+	DD_belatedPNG.fix('*');
+</script>
+<![endif]--></head>
+
+<body>
+<div id="wrap">
+<nav id="mainnav">
+
+<h1 id="textlogo">
+EasyDev<span> Users Guide</span>
+</h1>
+</nav>
+<script type="text/javascript">create_menu('../');</script>
+<section id="content" class="normalpage"><section id="page">
+
+<article class="post">
+<section class="entry">
+<h3>Global Function</h3>
+<div style="direction:rtl; text-align:right; font-family: Tahoma; font-size:12px;">
+<p>توابع عمومی سیستم بدون نیاز به بارگذاری کتابخانه یا فایل خاصی در دسترس میباشند.</p>
+
+<p>&nbsp;</p>
+&nbsp;
+
+<p>تابع loadClass: این تابع جهت بارگذاری انواع کلاسها و کتابخانه ها به کار میرود، نحوه استفاده از این تابع به شکل زیر میباشد ( مقدار برگشتی تابع آدرس کلاس یا کتابخانه درخواست شده میباشد. ):</p>
+
+<div class="codebox">$var =&amp; loadClass(&#39;file-name&#39;, &#39;class-name&#39;, &#39;object-name&#39;, &#39;dir&#39;);</div>
+    <p>&#39;file-name&#39;: مقدار این پارامتر نام فایل کلاس یا کتابخانه درخواستی بدون پسوند php. میباشد. ( نوع: رشته )</p>
+    <p>&#39;class-name&#39;: اسم کلاسی که میخواهید فراخوانی کنید. ( نوع: رشته )</p>
+    <p>&#39;object-name&#39;: در صورتی که مقداری برای این پارامتر مشخص کنید، کلاس با همین اسم در سیستم در دسترس خواهد بود ( در صورتی که مقداری برای این پارامتر تعیین نکنید به صورت پیشفرض از اسم کلاس استفاده میشود ). در صورتی که مقدار این پارامتر برای یک کلاس که بیشتر از یکبار با دستور loadClass فراخوانی میشود متفاوت باشد، سیستم به صورت خودکار برای هر مقدار یک آدرس جداگانه تولید خواهد کرد که این به معنی است در حافظه برای هر مقدار فضاهای جداگانه ای تخصیص داده خواهد شد. در صورتی که در یک بخش دیگر احتیاج به مقادیر کلاسی که قبلا فراخوانی کرده اید دارید باید مقدار این پارامتر در هر دو بخش یکسان باشد.</p>
+    <p>&#39;dir&#39;: در صورتی که برای این پارامتر مقداری مشخص نشود سیستم به صورت خودکار فولدرهای libraries را برای بارگذاری کلاس مورد نظر جستجو خواهد کرد. در صورتی که مقداری برای این پارامتر مشخص کنید سیستم در مسیر مشخص شده کلاس مورد نظر را چستجو خواهد کرد. به طور مثال اگر کلاس مورد نظرتان در مسیر app/myapps قرار دارد مقدار این پارامتر باید به صورت &#39;myapps&#39; وارد شود.</p>
+    <hr />
+    <p>&nbsp;</p>
+    <p>تابع isLoadedClass: این تابع اسم کلاسهای بارگذاری شده را به صورت یک آرایه برمیگرداند. نحوه استفاده از این تابع به شکل زیر میباشد:</p>
+    <div class="codebox">$loadedClasses = isLoadedClass();</div>
+    <hr />
+    <p>&nbsp;</p>
+    <p>تابع getConfigItem: این تابع آیتم درخواستی از فایل Config را در اختیار شما قرار میدهد. نحوه استفاده به شکل زیر میباشد:</p>
+    <div class="codebox">$defaultC = getConfigItem(&#39;defaultController&#39;);</div>
+    <p>در مثال بالا مقدار آیتم defaultController در متغیر defaultC$ قرار میگیرد.</p>
+    <p>برای اطلاع از اسامی آیتم ها به فایل config/config.php مراجعه کنید.</p>
+    <hr />
+    <p>&nbsp;</p>
+    <p>تابع setConfigItem: با استفاده از این تابع میتوانید مقادیر آیتم های موجود در فایل config/config.php را تغییر دهید. نحوه استفاده از این تابع به صورت زیر میباشد:</p>
+    <div class="codebox">setConfigItem(&#39;defaultController&#39;, &#39;test&#39;);</div>
+    
+    
+    <p>در مثال بالا در پارامتر اول نام آیتمی که میخواهیم مقدار آن را تغییر بدهیم را وارد میکنیم و در پارامتر دوم مقداری که میخواهیم را وارد میکنیم.</p>
+    <hr />
+    <p>&nbsp;</p>
+    <p>تابع getSiteUrl: این تابع آدرس Url وب سایت را برمیگرداند. به طور مثال:</p>
+    <div class="codebox">echo getSiteUrl();<br />
+        // <a href="http://example.com/index.php">http://example.com/index.php</a>
+        <br />
+        <br />
+        echo getSiteUrl(array(&#39;first&#39;, &#39;second&#39;));<br />
+        // <a href="http://example.com/index.php/first/second">http://example.com/index.php/first/second</a><br />
+    </div>
+    <p>این تابع آدرس وب سایت را به همراه آدرس صفحه اصلی یا index.php تولید میکند. در صورتی که طبق مثال دوم یک آرایه از رشته ها را به این تابع ارسال کنید، این رشته ها را به ترتیب وارد آدرس تولید شده میکند ( این تابع زمانی به کار میرود که میخواهید برای صفحات خود لینک ایجاد کنید ) در آموزش های آینده در مورد نحوه ایجاد لینک ها توضیح داده خواهد شد.</p>
+    <hr />
+    <p>&nbsp;</p>
+    <p>تابع getBaseUrl: این تابع آدرس Url وب سایت را برمیگرداند. نحوه استفاده از این تابع به صورت زیر میباشد:</p>
+    <div class="codebox">echo getBaseUrl();<br />
+        // <a href="http://example.com/index.php">http://example.com/</a><br />
+        <br />
+        echo getBaseUrl(array(&#39;first&#39;, &#39;second&#39;));<br />
+        // <a href="http://example.com/index.php/first/second">http://example.com/index.php/first/second</a><br />
+    </div>
+    <p>تنها تفاوتی که این تابع با تابع getSiteUrl دارد این است که در صورتی که هیچ پارامتری برای آن ارسال نشود آدرس وب سایت را بدون درج آدرس صفحه اصلی تولید میکند.</p>
+    <hr />
+    <p>&nbsp;</p>
+    <p>تابع makeUriString: این تابع آرایه ای از رشته ها را دریافت کرده و به صورت یک رشته uri بازمیگرداند.</p>
+    <div class="codebox">echo makeUriString(array(&#39;one&#39;, &#39;two&#39;, &#39;three&#39;));<br />
+        // one/two/three<br />
+        <br />
+        echo getBaseUrl(array(&#39;first&#39;, &#39;second&#39;));<br />
+        // <a href="http://example.com/index.php/first/second">http://example.com/index.php/first/second</a><br />
+    </div>
+    <p>در صورتی که switchToQueryString را از config/config.php فعال کرده باشید رشته هایی که این تابع تولید میکند به شکل زیر خواهد بود</p>
+    <div class="codebox">echo makeUriString(array(&#39;c&#39; =&gt; &#39;one&#39;, &#39;m&#39; = &gt; &#39;two&#39;, &#39;d&#39; =&gt; &#39;three&#39;));<br />
+        // ?c=one&amp;m=two&amp;d=three<br />
+        <br />
+        echo getBaseUrl(array(&#39;c&#39; =&gt; &#39;one&#39;, &#39;m&#39; = &gt; &#39;two&#39;, &#39;d&#39; =&gt; &#39;three&#39;));<br />
+        // <a href="http://example.com/index.php/first/second">http://example.com/index.php</a>?c=one&amp;m=two&amp;d=three</div>
+    <hr />
+    <p>&nbsp;</p>
+    <p>تابع lang: این تابع جهت چندزبانه کردن وب سایت ها به کار میرود. نحوه استفاده از این تابع بعدا در بخش آموزش Language توضیح داده خواهد شد.</p>
+    <hr />
+    <p>&nbsp;</p>
+    <p>تابع stod: این تابع جهت جایگزین کردن فاصله ها با کاراکتر - (DASH) مورد استفاده قرار میگیرد.</p>
+    <div class="codebox">echo stod(&#39;The quick brown fox jumps over the lazy dog&#39;)<br />
+        // The-quick-brown-fox-jumps-over-the-lazy-dog<br />
+        </div>
+    <p>این تابع urlTitle های مطابق با استانداردهای موتورهای جستجو تولید میکند.</p>
+    <hr />
+    <p>&nbsp;</p>
+    <p>تابع error: این تابع جهت مدیریت خطاها به کار میرود. عملکرد این تابع به صورت Redirect میباشد که وقتی اجرای برنامه به این خط برسد کاربر را به صفحه Error ارسال خواهد کرد.</p>
+    <div class="codebox">error(&#39;error title&#39;, &#39;error message&#39;);<br />
+        </div>
+    <p>جهت ویرایش ظاهر صفحه Error به این مسیر app/errors/errors.php مراجعه کنید.</p>
+    <hr />
+    <p></p>
+    <p>تابع writelog: این تابع مفید جهت ثبت وقایع و خطایابی مورد استفاده قرار میگیرد، نحوه استفاده از این تابع به شکل زیر میباشد.</p>
+    <div class="codebox">writeLog(&#39;log title&#39;, &#39;log message&#39;);</div>
+    <p>جهت تغییر مسیر ذخیره فایل های Log و همچنین برای فعال و غیر فعال کردن مکانیزم Log، فایل app/config/log.php ویرایش کنید. مسیر پیشفرض برای ذخیره فایلهای Log فولدر logs میباشد.</p>
+    <br />
+</div>
+
+</section>
+<div class="clear"></div>
+</article>
+</section>
+</section>
+</div>
+
+<footer>
+
+<div id="bottom">
+<a href="#">Home</a> | <a href="#">About Us</a> | <a href="#">Contact Us</a> |<a href="#"> Support</a> | <a href="#">Products</a> | <a href="#">Services</a>
+<div class="clear"></div>
+</div>
+<div id="credits">
+2010 &copy; All Rights Reserved.  <a href="http://cssheaven.org">Website Template</a> by CSSHeaven </div>
+</footer>
+
+</body>
+</html>
